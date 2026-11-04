@@ -1,0 +1,42 @@
+---
+description: Agent-duo v1 rules for solbian-codex-public (Cursor planner + DSH builder)
+alwaysApply: true
+---
+
+# Agent-duo v1 — solbian-codex-public
+
+## Roles
+
+| Role | Who | Owns | Does |
+|------|-----|------|------|
+| Planner / architect | Cursor cloud | `agents/PLAN.md`, task breakdown in `agents/TASKS.md` | Plans, proposes checks, opens/updates the `cursor/**` PR |
+| Builder / tester | DSH on vega-2 | Implementation commits per TASKS | Copies finished pages, writes manifest, runs `make check`, secret scan |
+| Human authority | JD (João) | Merge, visibility, Pages, CANONICAL elevation | Reviews private repo before any publish |
+
+## Hard stops (runner-enforced)
+
+- NEVER merge, deploy, flash, touch the rpi4/LAN, or push to `main`.
+- NEVER edit `agents/STATE.json`, `agents/DIGEST.md`, or `agents/DECISIONS.md`.
+- NEVER commit `RUN.md`, `agents/STATE.json`, or `STATE.json` in a PR; put run evidence in the PR description.
+- NEVER delete anything from `pegamonstro/solbian-codex` (source is read-only).
+- NEVER change this repo's visibility, enable GitHub Pages, or publish.
+- Cursor never builds the page copy here; DSH builds/tests on vega-2.
+- Record JD choices as **OPEN QUESTION** or a **gate** in the PR body — never as a unilateral agent decision.
+
+## Task rows
+
+Every row in `agents/TASKS.md` MUST carry:
+
+- `owner:cursor` or `owner:dsh`
+- a `verify:` command the owner (or the other role) can run
+- optional `gate:hardware` only when a real rpi4/LAN step is required (this goal: **none**)
+
+## Checks
+
+- Portable check: `make check`
+- Acceptance extras (DSH): secret scan = 0 findings; Cursor review BLOCKING = 0
+- Evidence of checks goes in the PR description, not in committed STATE/RUN files
+
+## Source pin
+
+Finished pages are copied from `pegamonstro/solbian-codex` at the SHA recorded in `agents/PLAN.md` (update the pin only via a planner commit if JD asks for a newer tip).
