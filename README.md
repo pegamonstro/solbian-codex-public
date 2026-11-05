@@ -7,8 +7,8 @@ Codex Solbian **public edition** (finished pages only).
 ## Status
 
 - Planner bootstrap: agent-duo v1 plan + tasks (`agents/PLAN.md`, `agents/TASKS.md`).
-- Page copy from `pegamonstro/solbian-codex` is **DSH-owned** (see tasks T3–T9).
-- After copy: start at `CURRENT_WORKING_CODEX/NAV.md` and read `MANIFEST.md` for provenance.
+- Finished-page copy from `pegamonstro/solbian-codex@ec1fee1e9ba08dac3332e765885f8cd4cd2a0883` is in-tree (16 CWC pages; companion glossary omitted pending JD).
+- Start at [`CURRENT_WORKING_CODEX/NAV.md`](CURRENT_WORKING_CODEX/NAV.md); provenance in [`MANIFEST.md`](MANIFEST.md).
 
 ## Check
 
