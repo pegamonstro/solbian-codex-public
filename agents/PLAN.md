@@ -1,94 +1,59 @@
-# PLAN — solbian-codex-pu-chief-of-staff-a4f6bf
+# PLAN — solbian-codex-pu-chief-of-staff-674f30
 
-**Goal:** Fill private `pegamonstro/solbian-codex-public` with **finished** Codex Solbian pages only, copied from `pegamonstro/solbian-codex`.  
-**Role:** Cursor = architect/planner (this file). DSH on vega-2 = build/test. JD = review/gates.  
-**As-of plan:** 2026-11-04 · **Repo visibility:** PRIVATE (do not change)
+**Goal:** Update README (and any “PRIVATE until JD” banners) so they state this public edition is **PUBLIC as of 2026-11-05** after JD review. Do **not** change page content.  
+**Role:** Cursor = architect/planner (this file + banner/README wording). DSH on vega-2 = verify (`make check`, secret scan). JD = merge / Pages gates.  
+**As-of plan:** 2026-11-05 (Lisbon) · **Edition status:** PUBLIC after JD review (2026-11-05 Lisbon)
 
 ## Context read (planner)
 
 | Artefact | Result |
 |----------|--------|
-| `.cursor/rules/duo.mdc` | **Absent** at start — bootstrapped in this PR |
-| `agents/PLAN.md` | **Absent** — this file |
+| `.cursor/rules/duo.mdc` | Present — Cursor planner + DSH builder; agents never merge/Pages/flip visibility themselves |
+| `agents/PLAN.md` | Prior goal `…-a4f6bf` (CWC-16 private fill) — superseded by this plan |
 | `agents/STATE.json` | **Absent** — planner must not create/edit/commit it |
 | `agents/DECISIONS.md` | **Absent** — planner must not create/edit it; JD items → OPEN QUESTIONS in PR |
 | Open issues (`solbian-codex-public`) | None |
-| Open PRs (`solbian-codex-public`) | None (this PR is the first) |
-| Source tip | `pegamonstro/solbian-codex@ec1fee1e9ba08dac3332e765885f8cd4cd2a0883` (2026-11-03; includes JD D01–D03 record, CANONICAL: NONE) |
+| Open PRs (`solbian-codex-public`) | None at plan start (this PR is the deliverable) |
+| GitHub visibility (read-only check) | Already `PUBLIC` / `isPrivate: false`; description notes PUBLIC 2026-11-05 after JD review |
+| Source pin (unchanged) | `pegamonstro/solbian-codex@ec1fee1e9ba08dac3332e765885f8cd4cd2a0883` |
+| Page set | 16 CWC pages + `MANIFEST.md` already in-tree from prior fill — **do not alter page bodies** |
 
 ## Non-goals
 
-- No merge to `main`, no Pages, no visibility change, no publish.
-- No edits/deletes in `pegamonstro/solbian-codex`.
-- No rpi4 / LAN / flash (`gate:hardware`: **not required** for this goal).
-- No CANONICAL elevation; copies remain WORKING / SYNTHESIS as marked in source.
+- No edits under `CURRENT_WORKING_CODEX/**` (no page-set / doctrine changes).
+- No new page copies; no source-pin change; no mutations to `pegamonstro/solbian-codex`.
+- No merge to `main`, no enabling GitHub Pages, no agent-driven visibility API flips (repo already PUBLIC via JD).
+- No rpi4 / LAN / flash (`gate:hardware`: **not required**).
 
-## Finished-page policy (proposed — gated by JD)
+## Banner / wording policy (this goal)
 
-**Include** a page only if all are true:
+**Replace** any “stay PRIVATE / do not publish until JD” language with a clear public-edition notice:
 
-1. Lives under `CURRENT_WORKING_CODEX/` (Living Working Codex prose / nav), **or** is an explicitly JD-approved companion listed below.
-2. Is **not** a stub (`*.stub.md`), superseded pointer (`01_WHAT_IS.md`), DRAFT, INCOMPLETE, TODO, notes-only, session digest, or personal/private dialogue body.
-3. Carries a completion / navigation token in-tree (e.g. `CODEX_WORKING_*_OK` / V2 OK) **or** is nav/outline required to read the set.
-4. Contains no private dialogue message bodies, Mac-local secrets, or personal-only process notes.
+- Edition is **PUBLIC** after JD review on **2026-11-05** (Lisbon).
+- README must **not** say stay PRIVATE, do not publish, or withhold visibility pending review.
+- Portable check (`scripts/check.sh`) must assert the PUBLIC-after-JD wording (not the old PRIVATE reminder).
 
-**Exclude by default (do not copy):**
+**In scope paths:** `README.md`, root status banners (e.g. `MANIFEST.md` edition line), `scripts/check.sh`, `agents/PLAN.md`, `agents/TASKS.md`.  
+**Out of scope:** CWC page prose (even if a page mentions “visibility” in doctrine tables).
 
-- `*.stub.md`, `01_WHAT_IS.md` (superseded pointer)
-- `AUDIT/**` (forensic / workbook / draft surfaces)
-- `meta/**` (session digests / wave status)
-- `PROVENANCE/**`, `OPEN_QUESTIONS/**` (working packages outside CWC digest)
-- `CONSTITUTION/**` (includes `CONSTITUTION_STUB_INCOMPLETE.md`)
-- `DIALOGUE/**` (private-by-default SOURCE; redaction risk)
-- `SYNTHESIS/**`, `CONCEPTS/**`, `ANNOTATIONS/**` (process / skeleton / sample)
-- Historical inventory trees (`LAWS/`, `SCROLLS/`, `CHAPTERS/`, `PROTOCOLS/`, `ETHICS/`, `CANONS/`, `COVENANTS/`) as bulk dumps — unless JD opens a companion include
-- `ARCH_PLACEMENT_README.md`, source `ORGANISATION.md` / source `README.md` (hub policy for the other repo)
+## Concrete implementation steps
 
-### Candidate include set (source SHA `ec1fee1e9ba08dac3332e765885f8cd4cd2a0883`)
+### Cursor (this PR)
 
-| Dest path (same relative) | Source path |
-|---------------------------|-------------|
-| `CURRENT_WORKING_CODEX/00_README.md` | `CURRENT_WORKING_CODEX/00_README.md` |
-| `CURRENT_WORKING_CODEX/NAV.md` | `CURRENT_WORKING_CODEX/NAV.md` |
-| `CURRENT_WORKING_CODEX/OUTLINE.md` | `CURRENT_WORKING_CODEX/OUTLINE.md` |
-| `CURRENT_WORKING_CODEX/01_WHAT_IS_CODEX_SOLBIAN.md` | `CURRENT_WORKING_CODEX/01_WHAT_IS_CODEX_SOLBIAN.md` |
-| `CURRENT_WORKING_CODEX/02_ORIGIN_AND_HISTORY.md` | `CURRENT_WORKING_CODEX/02_ORIGIN_AND_HISTORY.md` |
-| `CURRENT_WORKING_CODEX/03_FOUNDATIONAL_CONCEPTS.md` | `CURRENT_WORKING_CODEX/03_FOUNDATIONAL_CONCEPTS.md` |
-| `CURRENT_WORKING_CODEX/04_LAWS.md` | `CURRENT_WORKING_CODEX/04_LAWS.md` |
-| `CURRENT_WORKING_CODEX/04b_ETHICS.md` | `CURRENT_WORKING_CODEX/04b_ETHICS.md` |
-| `CURRENT_WORKING_CODEX/05_CANONS.md` | `CURRENT_WORKING_CODEX/05_CANONS.md` |
-| `CURRENT_WORKING_CODEX/06_COVENANTS.md` | `CURRENT_WORKING_CODEX/06_COVENANTS.md` |
-| `CURRENT_WORKING_CODEX/07_PROTOCOLS.md` | `CURRENT_WORKING_CODEX/07_PROTOCOLS.md` |
-| `CURRENT_WORKING_CODEX/08_SCROLLS.md` | `CURRENT_WORKING_CODEX/08_SCROLLS.md` |
-| `CURRENT_WORKING_CODEX/09_CHAPTERS.md` | `CURRENT_WORKING_CODEX/09_CHAPTERS.md` |
-| `CURRENT_WORKING_CODEX/10_DIALOGUE_AND_METHOD.md` | `CURRENT_WORKING_CODEX/10_DIALOGUE_AND_METHOD.md` |
-| `CURRENT_WORKING_CODEX/11_GLOSSARY.md` | `CURRENT_WORKING_CODEX/11_GLOSSARY.md` |
-| `CURRENT_WORKING_CODEX/12_OPEN_QUESTIONS.md` | `CURRENT_WORKING_CODEX/12_OPEN_QUESTIONS.md` |
+1. Rewrite `agents/PLAN.md` / `agents/TASKS.md` for task `…-674f30` (owner + verify per row).
+2. Update `README.md`: remove PRIVATE / do-not-publish banner; state PUBLIC after JD review on 2026-11-05 Lisbon.
+3. Update any non-page “private edition / PRIVATE until JD” banners (e.g. `MANIFEST.md` title/policy line only).
+4. Align `scripts/check.sh` README assertion with PUBLIC-after-JD wording.
+5. Run **`make check`** in the planner VM; paste transcript in the PR description.
+6. Open/update **one** `cursor/**` PR. Do not merge.
 
-**Companion (OPEN QUESTION for JD — default OFF until answered):**
+### DSH (vega-2)
 
-| Dest path | Source path | Why gated |
-|-----------|-------------|-----------|
-| `GLOSSARY/GLOSSARY_TERMS_2026-09-20.md` | `GLOSSARY/GLOSSARY_TERMS_2026-09-20.md` | Linked from CWC §11; titles inventory only — JD confirm include vs leave broken relative links |
-
-### Generated / local (not from source corpus)
-
-| Path | Owner | Notes |
-|------|-------|-------|
-| `MANIFEST.md` | DSH | Every copied page: dest path, source path, source commit SHA, content sha256 |
-| `README.md` | Cursor (seed) / DSH (may refresh after copy) | States PRIVATE until JD review; points to NAV |
-
-## Concrete implementation steps (DSH)
-
-1. On vega-2, fetch `pegamonstro/solbian-codex` **read-only** at pin `ec1fee1e9ba08dac3332e765885f8cd4cd2a0883` (shallow clone or `git fetch` + checkout detached). **Do not push, delete, or mutate** that repo.
-2. Confirm JD answers to OPEN QUESTIONS in the planner PR (or treat defaults: companion glossary OFF; include CWC candidate set as listed).
-3. From a `cursor/**` working tree of `solbian-codex-public` (same feature branch unless JD directs otherwise), copy each approved page preserving relative paths (`mkdir -p` + `cp -a` or equivalent). No rewrite of doctrine; optional link-note only if JD requires.
-4. Write root `MANIFEST.md` with one row per copied file: `dest`, `source_repo`, `source_path`, `source_commit`, `sha256`.
-5. Ensure `.gitignore` excludes `RUN.md`, `agents/STATE.json`, `STATE.json`, secrets.
-6. Run **`make check`** (must PASS).
-7. Run secret scan (gitleaks or project equivalent) — **0 findings**.
-8. Request / wait for Cursor review — **BLOCKING = 0**.
-9. Put command transcripts in the PR description (not committed STATE/RUN). Leave merge, Pages, and visibility to JD.
+1. Pull the `cursor/**` branch; confirm diff does **not** change `CURRENT_WORKING_CODEX/**` page bodies.
+2. Run **`make check`** (must PASS).
+3. Run secret scan (gitleaks or site equivalent) — **0 findings**.
+4. Paste transcripts in the PR description (do not commit STATE/RUN).
+5. Leave merge and GitHub Pages to JD.
 
 ## Exact check DSH must run
 
@@ -96,33 +61,30 @@
 make check
 ```
 
-Optional evidence (also paste into PR description):
+Optional evidence (paste into PR description only):
 
 ```bash
-# After pages + MANIFEST exist:
 make check
 # Secret scan (example; use site tooling if different):
 gitleaks detect --source . --no-git -v
-# Confirm still private (must remain private):
-gh repo view pegamonstro/solbian-codex-public --json visibility -q .visibility
-# Confirm source untouched:
-# (no push to pegamonstro/solbian-codex; no local destructive ops)
+# Confirm no page-set drift in this PR:
+git diff origin/main...HEAD --name-only | rg 'CURRENT_WORKING_CODEX/' || echo 'OK: no CWC path changes'
+# Read-only visibility evidence (do not flip):
+gh repo view pegamonstro/solbian-codex-public --json visibility,isPrivate -q .
 ```
 
 **Hardware:** none. Do **not** add `gate:hardware` for this goal.
 
 ## OPEN QUESTIONS / gates for JD (not decided by agents)
 
-1. **Finished set:** Approve the 16 CWC candidate pages above as the finished edition for this private fill? Add/remove any?
-2. **Companion glossary:** Include `GLOSSARY/GLOSSARY_TERMS_2026-09-20.md` (default: omit until yes)?
-3. **`12_OPEN_QUESTIONS.md`:** Keep (finished digest) or omit because the title is “open questions”?
-4. **Broken relative links** to excluded AUDIT/PROVENANCE/etc.: leave as-is (provenance pointers), strip, or rewrite to absolute GitHub URLs on `solbian-codex`?
-5. **Merge / Pages / visibility:** remain gated — do not merge to `main`, do not enable Pages, do not make public until JD explicitly says so.
+1. **Merge this PR?** Agents will not merge to `main`.
+2. **GitHub Pages?** Repo description/visibility already reflect PUBLIC after JD review; enabling Pages remains a JD-only gate (agents must not enable Pages).
+3. **Carry-over from prior fill (still open unless JD already answered elsewhere):** companion glossary include? link policy for excluded trees? keep `12_OPEN_QUESTIONS.md`?
 
 ## Planner deliverables in this PR
 
-- `.cursor/rules/duo.mdc`
 - `agents/PLAN.md` (this file)
 - `agents/TASKS.md` (owner + verify per row)
-- `Makefile` + `scripts/check.sh` (portable `make check`)
-- Seed `README.md` / `.gitignore` updates as needed for the private edition workflow
+- `README.md` PUBLIC-after-JD banner
+- Non-page private-edition banner cleanup (`MANIFEST.md` header only)
+- `scripts/check.sh` assertion aligned with PUBLIC wording

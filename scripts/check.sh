@@ -32,9 +32,13 @@ for banned in RUN.md agents/STATE.json STATE.json; do
 done
 pass "no banned STATE/RUN files in tree"
 
-# Privacy reminder in README
-rg -qi 'PRIVATE' README.md || fail "README.md must state repo is PRIVATE"
-pass "README privacy notice"
+# Public-edition notice in README (after JD review 2026-11-05 Lisbon)
+rg -qi 'PUBLIC' README.md || fail "README.md must state edition is PUBLIC"
+rg -q '2026-11-05' README.md || fail "README.md must cite PUBLIC-as-of 2026-11-05"
+if rg -qi 'do \*\*not\*\* publish|PRIVATE\*\* until|stay PRIVATE' README.md; then
+  fail "README.md must not tell readers to stay PRIVATE / not publish"
+fi
+pass "README PUBLIC-after-JD notice"
 
 # --- Builder mode when MANIFEST exists ---
 if [[ -f MANIFEST.md ]]; then

@@ -1,7 +1,8 @@
-# MANIFEST — finished Codex Solbian pages (private edition)
+# MANIFEST — finished Codex Solbian pages (public edition)
 
 **Source repo:** `pegamonstro/solbian-codex`  
 **Source commit:** `ec1fee1e9ba08dac3332e765885f8cd4cd2a0883`  
+**Edition status:** PUBLIC after JD review on 2026-11-05 (Lisbon).  
 **Policy:** CWC candidate set from `agents/PLAN.md` (defaults while JD OPEN QUESTIONS pending).  
 **Companion glossary:** omitted (default OFF).  
 **Copied:** read-only; source repo not mutated.
