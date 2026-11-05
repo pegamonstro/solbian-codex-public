@@ -1,0 +1,20 @@
+# Agent-duo: never commit run/state evidence
+RUN.md
+STATE.json
+agents/STATE.json
+agents/DIGEST.md
+
+# Local / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+*.sqlite
+.env
+.env.*
+!.env.template
+
+# Secret scan / tool caches
+.gitleaks-report.json
+*.pem
+id_rsa*
