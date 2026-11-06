@@ -2,7 +2,7 @@
 
 Codex Solbian **public edition** (finished pages only).
 
-**Visibility: PRIVATE** until JD has reviewed it. Do **not** publish, enable GitHub Pages, or change visibility without an explicit JD decision.
+**Visibility: PUBLIC** as of **2026-11-05** (Lisbon), after JD review.
 
 ## Status
 
